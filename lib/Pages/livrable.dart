@@ -14,7 +14,7 @@ class Livrable extends StatefulWidget {
   final String rstid;
 
   const Livrable({Key? key, required this.title, required this.rstid})
-      : super(key: key);
+    : super(key: key);
 
   @override
   State<Livrable> createState() => _LivrableState();
@@ -92,12 +92,15 @@ class _LivrableState extends State<Livrable> {
 
     var url = Uri.parse("http://demoalito.mydevcloud.com/api/addavis.php");
 
-    var res = await http.post(url, body: {
-      'proprio': widget.rstid,
-      'client_name': userName,
-      'note': valeur.toString(),
-      'comment': cmtctrl.text,
-    });
+    var res = await http.post(
+      url,
+      body: {
+        'proprio': widget.rstid,
+        'client_name': userName,
+        'note': valeur.toString(),
+        'comment': cmtctrl.text,
+      },
+    );
 
     if (res.statusCode == 200) {
       _showMyDialog(context);
@@ -110,25 +113,26 @@ class _LivrableState extends State<Livrable> {
     return showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => AlertDialog(
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            Icon(Icons.check_circle, color: Colors.green, size: 55),
-            SizedBox(height: 10),
-            Text(
-              "Votre avis a bien été envoyé",
-              textAlign: TextAlign.center,
+      builder:
+          (_) => AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.check_circle, color: Colors.green, size: 55),
+                SizedBox(height: 10),
+                Text(
+                  "Votre avis a bien été envoyé",
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("OK"),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("OK"),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -136,42 +140,43 @@ class _LivrableState extends State<Livrable> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (_) => Padding(
-        padding: MediaQuery.of(context).viewInsets,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                "Noter ce restaurant",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+      builder:
+          (_) => Padding(
+            padding: MediaQuery.of(context).viewInsets,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    "Noter ce restaurant",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    controller: cmtctrl,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Commentaire",
+                    ),
+                  ),
+                  NumberPicker(
+                    value: note,
+                    minValue: 1,
+                    maxValue: 6,
+                    onChanged: (val) => setState(() => note = val),
+                  ),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+                    ),
+                    onPressed: () => noter(note, context),
+                    child: const Text("Soumettre"),
+                  ),
+                ],
               ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: cmtctrl,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Commentaire",
-                ),
-              ),
-              NumberPicker(
-                value: note,
-                minValue: 1,
-                maxValue: 6,
-                onChanged: (val) => setState(() => note = val),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
-                ),
-                onPressed: () => noter(note, context),
-                child: const Text("Soumettre"),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
     );
   }
 
@@ -188,59 +193,123 @@ class _LivrableState extends State<Livrable> {
           title: Text(widget.title),
           backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
           bottom: const TabBar(
-            tabs: [
-              Tab(text: "Commande"),
-              Tab(text: "Avis"),
-            ],
+            tabs: [Tab(text: "Commande"), Tab(text: "Avis")],
           ),
         ),
         body: TabBarView(
           children: [
             // ===== COMMANDE =====
-            FutureBuilder<List<Livrables>>(
-              future: repasFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
+            Column(
+              children: [
+                Expanded(
+                  child: FutureBuilder<List<Livrables>>(
+                    future: repasFuture,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
 
-                if (snapshot.hasError) {
-                  return Center(
-                    child: Text(
-                      snapshot.error.toString(),
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                  );
-                }
+                      if (snapshot.hasError) {
+                        return Center(
+                          child: Text(
+                            snapshot.error.toString(),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        );
+                      }
 
-                final repas = snapshot.data!;
+                      final repas = snapshot.data!;
 
-                return ListView.builder(
-                  itemCount: repas.length,
-                  itemBuilder: (context, index) {
-                    final repa = repas[index];
+                      return ListView.builder(
+                        itemCount: repas.length,
+                        itemBuilder: (context, index) {
+                          final repa = repas[index];
 
-                    return Card(
-                      child: ListTile(
-                        leading: Image.network(
-                          "http://demoalito.mydevcloud.com/Resto/assets/uploads/images/${repa.product_image}",
-                          width: 50,
-                        ),
-                        title: Text(repa.product_name),
-                        subtitle: Text("${repa.product_price} FCFA"),
-                        trailing: Checkbox(
-                          value: repaStatus[index],
-                          onChanged: (val) {
-                            setState(() {
-                              repaStatus[index] = val!;
-                            });
-                          },
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
+                          return Card(
+                            child: ListTile(
+                              leading: Image.network(
+                                "http://demoalito.mydevcloud.com/Resto/assets/uploads/images/${repa.product_image}",
+                                width: 50,
+                              ),
+                              title: Text(repa.product_name),
+                              subtitle: Text("${repa.product_price} FCFA"),
+                              trailing: Checkbox(
+                                  value: repaStatus[index],
+                                  activeColor: Color.fromRGBO(251, 219, 91, 1),
+                                  onChanged: (bool? val) {
+                                    setState(() {
+                                      repaStatus[index] = val ?? false;
+                                      if (repaStatus[index]) {
+                                        tmpArray.add(repa.product_name);
+                                        priceArray
+                                            .add(int.parse(repa.product_price));
+                                        qtArray.add(1);
+                                        propriArray.add(repa.proprio);
+                                      } else {
+                                        tmpArray.remove(repa.product_name);
+                                        priceArray.remove(
+                                            int.parse(repa.product_price));
+                                        qtArray.remove(1);
+                                        propriArray.remove(repa.proprio);
+                                      }
+                                    });
+                                  },
+                                ),
+                              
+                           /*   Checkbox(
+                                value: repaStatus[index],
+                                onChanged: (val) {
+                                  setState(() {
+                                    repaStatus[index] = val!;
+                                  });
+                                },
+                              ),*/
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
+                
+                // 🔹 BOUTON COMMANDER
+    Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+          minimumSize: const Size.fromHeight(50),
+        ),
+        onPressed: () {
+          if (tmpArray.isEmpty) {
+            Fluttertoast.showToast(
+              msg: "Vous devez sélectionner un repas",
+            );
+            return;
+          }
+
+          setState(() => processing = true);
+
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => Fun(
+                repas: tmpArray,
+                prix: priceArray,
+                qtite: qtArray,
+                proprio: propriArray,
+              ),
+            ),
+          );
+        },
+        child: processing
+            ? const CircularProgressIndicator(color: Colors.black)
+            : const Text(
+                "Commander",
+                style: TextStyle(color: Colors.black),
+              ),
+      ),
+    ),
+              ],
             ),
 
             // ===== AVIS =====

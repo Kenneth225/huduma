@@ -66,36 +66,82 @@ class _CommandesState extends State<Commandes>
     return await viewdets(iduniq);
   }
 
-  Future<void> _showdetailfood(context, iduniq) async {
+  Future<void> _showdetailfood(BuildContext context, iduniq) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text("Détails"),
+        content: SizedBox(
+          width: double.maxFinite,
+          height: 150, // 👈 HAUTEUR OBLIGATOIRE
+          child: FutureBuilder<List<Odets>>(
+            future: info(iduniq),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Center(child: Text("Aucun détail disponible."));
+              }
+
+              final data = snapshot.data!;
+
+              return ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  final det = data[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Text('${det.repas} × ${det.quantite}'),
+                  );
+                },
+              );
+            },
+          ),
+        ),
+        actions: [
+          TextButton(
+            child: const Text('OK'),
+            onPressed: () => Navigator.pop(context),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
+  /*Future<void> _showdetailfood(context, iduniq) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          content: SingleChildScrollView(
-            child: FutureBuilder<List<Odets>>(
-              future: info(iduniq),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-
-                if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return const Text("Aucun détail disponible.");
-                }
-
-                final data = snapshot.data!;
-
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: data.length,
-                  itemBuilder: (context, index) {
-                    final det = data[index];
-                    return Text('${det.repas} * ${det.quantite}');
-                  },
-                );
-              },
-            ),
+          content: FutureBuilder<List<Odets>>(
+            future: info(iduniq),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+          
+              if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Text("Aucun détail disponible.");
+              }
+          
+              final data = snapshot.data!;
+          
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  final det = data[index];
+                  return Text('${det.repas} * ${det.quantite}');
+                },
+              );
+            },
           ),
           actions: [
             TextButton(
@@ -106,7 +152,7 @@ class _CommandesState extends State<Commandes>
         );
       },
     );
-  }
+  }*/
 
   Future<void> _showmodal(context, iduniq) async {
     return showDialog<void>(
@@ -247,7 +293,7 @@ class _CommandesState extends State<Commandes>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           // 🔹 NumberPicker intégré pour Qtité
-                          NumberPicker(
+                        /*  NumberPicker(
                             value:  1,
                             minValue: 1,
                             maxValue: 10,
@@ -259,7 +305,7 @@ class _CommandesState extends State<Commandes>
                               });
                             },
                           ),
-                          const SizedBox(width: 10),
+                          const SizedBox(width: 10),*/
                           TextButton(
                             child: Text(
                               '${com.orderStatus}',
@@ -329,7 +375,7 @@ class _CommandesState extends State<Commandes>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        NumberPicker(
+                      /*  NumberPicker(
                           value: 1 ,
                           minValue: 1,
                           maxValue: 20,
@@ -340,7 +386,7 @@ class _CommandesState extends State<Commandes>
                               com.orderNbPlace = val as String?;
                             });
                           },
-                        ),
+                        ),*/
                         const SizedBox(width: 10),
                         TextButton(
                           child: Text(
