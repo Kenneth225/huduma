@@ -1,4 +1,3 @@
-
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:ohresto/Pages/a_propos.dart';
 import 'package:ohresto/Pages/cgu.dart';
@@ -11,7 +10,6 @@ import 'commandes.dart';
 import 'profil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class Acceuil extends StatefulWidget {
   Acceuil({Key? key}) : super(key: key);
 
@@ -20,12 +18,7 @@ class Acceuil extends StatefulWidget {
 }
 
 int currentIndex = 0;
-List listofbody = [
-  new Menu(),
-  new HomePage(),
-  new Commandes(),
-  new Profil(),
-];
+List listofbody = [new Menu(), new HomePage(), new Commandes(), new Profil()];
 
 class _AcceuilState extends State<Acceuil> {
   @override
@@ -41,16 +34,14 @@ class _AcceuilState extends State<Acceuil> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0.0,
-        title: Text("ohresto"),
+        title: Text("OHRESTO", style: TextStyle(color: Colors.white)),
         centerTitle: true,
-        backgroundColor: Color.fromRGBO(251, 219, 91, 1),
+        backgroundColor: Color(0xFF006650),
       ),
-      body: Center(
-        child: listofbody[currentIndex],
-      ),
+      body: Center(child: listofbody[currentIndex]),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -60,56 +51,52 @@ class _AcceuilState extends State<Acceuil> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.yellowAccent[700],
+              decoration: BoxDecoration(color: Color(0xFF006650)),
+              child: Text(
+                'OHRESTO Menu',
+                style: TextStyle(color: Colors.white, fontSize: 18),
               ),
-              child: Text('ohresto Menu'),
             ),
             ListTile(
               title: Row(
                 children: [
                   Icon(Icons.share),
-                  SizedBox(
-                    width: 2,
-                  ),
+                  SizedBox(width: 2),
                   Text('Inviter un ami'),
                 ],
               ),
               onTap: () {
                 Share.share(
-                    "ohresto est l'application la plus cool du BENIN je t'invite à la telecharger également !");
+                  "ohresto est l'application la plus cool du BENIN je t'invite à la telecharger également !",
+                );
               },
             ),
             ListTile(
               title: Row(
                 children: [
                   Icon(Icons.card_membership),
-                  SizedBox(
-                    width: 2,
-                  ),
+                  SizedBox(width: 2),
                   Text('CGU'),
                 ],
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Cgu(),
-                ));
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => Cgu()));
               },
             ),
             ListTile(
               title: Row(
                 children: [
                   Icon(Icons.info),
-                  SizedBox(
-                    width: 2,
-                  ),
+                  SizedBox(width: 2),
                   Text('A propos'),
                 ],
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => new Propos(),
-                ));
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => new Propos()));
               },
             ),
           ],
@@ -118,33 +105,35 @@ class _AcceuilState extends State<Acceuil> {
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: currentIndex,
         onItemSelected: (index) {
-          setState(
-            () {
-              currentIndex = index;
-            },
-          );
+          setState(() {
+            currentIndex = index;
+          });
         },
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
-              icon: Icon(Icons.room_service),
-              title: Text("Acceuil"),
-              activeColor: Color.fromRGBO(251, 219, 91, 1),
-              inactiveColor: Colors.blueGrey),
+            icon: Icon(Icons.room_service),
+            title: Text("Acceuil"),
+            activeColor: Color(0xFF006650),
+            inactiveColor: Colors.blueGrey,
+          ),
           BottomNavyBarItem(
-              icon: Icon(Icons.search),
-              title: Text("Recherche"),
-              activeColor: Color.fromRGBO(251, 219, 91, 1),
-              inactiveColor: Colors.blueGrey),
+            icon: Icon(Icons.search),
+            title: Text("Recherche"),
+            activeColor: Color(0xFF006650),
+            inactiveColor: Colors.blueGrey,
+          ),
           BottomNavyBarItem(
-              icon: Icon(Icons.restaurant_menu),
-              title: Text("Données"),
-              activeColor: Color.fromRGBO(251, 219, 91, 1),
-              inactiveColor: Colors.blueGrey),
+            icon: Icon(Icons.restaurant_menu),
+            title: Text("Données"),
+            activeColor: Color(0xFF006650),
+            inactiveColor: Colors.blueGrey,
+          ),
           BottomNavyBarItem(
-              icon: Icon(Icons.person),
-              title: Text("Profil"),
-              activeColor: Color.fromRGBO(251, 219, 91, 1),
-              inactiveColor: Colors.blueGrey)
+            icon: Icon(Icons.person),
+            title: Text("Profil"),
+            activeColor: Color(0xFF006650),
+            inactiveColor: Colors.blueGrey,
+          ),
         ],
       ),
     );

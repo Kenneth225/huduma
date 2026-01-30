@@ -6,20 +6,21 @@ class Propos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black,
+      color: Colors.white,
       child: Container(
         margin: EdgeInsets.all(20.0),
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage('images/icon.png'))),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                  height: 400,),
-                                      Text("Version: 1.0.1", style: TextStyle(fontSize: 16.0,color: Colors.white),)
-                                    ],
-                                  ),
-                        ) ,
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('images/icon.png')),
+        ),
+        child: Column(
+          children: [
+            Text(
+              "Version: 1.0.1",
+              style: TextStyle(fontSize: 16.0, color: Colors.white),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

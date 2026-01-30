@@ -214,7 +214,7 @@ class _InscriptionState extends State<Inscription> {
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(colors: [
                               Color.fromRGBO(0, 0, 0, 1),
-                              Color.fromRGBO(251, 219, 91, 1),
+                              Color(0xFF006650),
                             ])),
                         child: Center(
                           child: TextButton(
@@ -242,7 +242,7 @@ class _InscriptionState extends State<Inscription> {
                           },
                           child: Text("J'ai un compte",
                               style: TextStyle(
-                                  color: Color.fromRGBO(251, 219, 91, 1)))),
+                                  color: Color(0xFF006650)))),
                     ],
                   ),
                 )

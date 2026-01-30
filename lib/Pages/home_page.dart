@@ -56,10 +56,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Color.fromRGBO(251, 219, 91, 1),
+        backgroundColor: Color(0xFF006650),
         title: Text("Rechercher un repas"),
         actions: [
           IconButton(

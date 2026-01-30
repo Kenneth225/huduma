@@ -227,11 +227,11 @@ class _CommandesState extends State<Commandes>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       appBar:AppBar(
   title: const Text('Mes Commandes'),
-  backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+  backgroundColor: const Color(0xFF006650),
   bottom: TabBar(
     controller: _tabController,
     labelColor: Colors.white,

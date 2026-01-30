@@ -37,7 +37,7 @@ class _ProfilState extends State<Profil> {
   Widget _changed() {
     return SingleChildScrollView(
       child: Container(
-        color: Colors.black,
+        color: Colors.white,
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -52,7 +52,7 @@ class _ProfilState extends State<Profil> {
                   fontSize: 30.0,
                   fontFamily: 'Pacifico',
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.grey,
                 ),
               ),
               SizedBox(
@@ -69,7 +69,7 @@ class _ProfilState extends State<Profil> {
                     child: ListTile(
                       leading: Icon(
                         Icons.phone,
-                        color: Color.fromRGBO(251, 219, 91, 1),
+                        color: Color(0xFF006650),
                       ),
                       title: Text(
                         '${tel}',
@@ -87,7 +87,7 @@ class _ProfilState extends State<Profil> {
                   child: ListTile(
                     leading: Icon(
                       Icons.email,
-                      color: Color.fromRGBO(251, 219, 91, 1),
+                      color: Color(0xFF006650),
                     ),
                     title: Text(
                       '${mail}',
@@ -106,7 +106,7 @@ class _ProfilState extends State<Profil> {
                   child: ListTile(
                     leading: Icon(
                       Icons.food_bank,
-                      color: Color.fromRGBO(251, 219, 91, 1),
+                      color: Color(0xFF006650),
                     ),
                     title: Text(
                       'Recettes',
@@ -129,7 +129,7 @@ class _ProfilState extends State<Profil> {
                   child: ListTile(
                     leading: Icon(
                       Icons.star,
-                      color: Color.fromRGBO(251, 219, 91, 1),
+                      color: Color(0xFF006650),
                     ),
                     title: Text(
                       '${nbetoile} HUMS',
@@ -148,7 +148,7 @@ class _ProfilState extends State<Profil> {
                   child: ListTile(
                     leading: Icon(
                       Icons.logout,
-                      color: Color.fromRGBO(251, 219, 91, 1),
+                      color: Color(0xFF006650),
                     ),
                     title: Text(
                       'Deconnexion',

@@ -165,7 +165,7 @@ class _FunState extends State<Fun> {
             ),
             Center(
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: const Color.fromRGBO(251, 219, 91, 1)),
+                style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF006650)),
                 onPressed: () {
                   validation(repas, quantite, mnt, prprio);
                 },
@@ -183,10 +183,10 @@ class _FunState extends State<Fun> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Sommaire de commande"),
-        backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+        backgroundColor: const Color(0xFF006650),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -315,7 +315,7 @@ class _FunState extends State<Fun> {
                 ? const Text("Position récupérée", style: TextStyle(color: Colors.green, fontStyle: FontStyle.italic))
                 : ElevatedButton(
                     onPressed: getCurrentLocation,
-                    style: ElevatedButton.styleFrom(backgroundColor: const Color.fromRGBO(251, 219, 91, 1)),
+                    style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF006650)),
                     child: const Text("Envoyer ma position actuelle"),
                   ),
           ],
@@ -343,10 +343,10 @@ class _FunState extends State<Fun> {
       height: 50,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        gradient: const LinearGradient(colors: [Color.fromRGBO(251, 219, 91, 1), Color.fromRGBO(251, 219, 91, 1)]),
+        gradient: const LinearGradient(colors: [Color(0xFF006650), Color(0xFF006650)]),
       ),
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(backgroundColor: const Color.fromRGBO(251, 219, 91, 1)),
+        style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF006650)),
         onPressed: () {
           if (numberctrl.text.isEmpty) {
             Fluttertoast.showToast(msg: "Veillez remplir tous les champs", toastLength: Toast.LENGTH_SHORT);
@@ -375,7 +375,7 @@ void _settingModalBottomSheet(BuildContext context) {
           const Center(child: Text("Votre commande devrait être prise en compte d'ici 5 min", style: TextStyle(fontSize: 23.2))),
           Center(
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: const Color.fromRGBO(251, 219, 91, 1)),
+              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF006650)),
               child: const Text("Terminer"),
               onPressed: () {
                 Navigator.pushNamedAndRemoveUntil(context, 'accueil', (route) => false);

@@ -92,11 +92,11 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: AppBar(
-          backgroundColor: Color.fromRGBO(251, 219, 91, 1),
+          backgroundColor: Color(0xFF006650),
           bottom: TabBar(
             controller: _tabController,
             labelColor: Colors.white,
@@ -119,7 +119,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                 child: Text(
                   "Les menus du jour",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       fontStyle: FontStyle.italic),
@@ -150,7 +150,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                         return Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Card(
-                            color: Colors.grey[900],
+                            color: Colors.white38,
                             child: Column(
                               children: [
                                 FutureBuilder<List<Detailsp>>(
@@ -160,11 +160,11 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                                         detSnapshot.data!.isEmpty) {
                                       return Container(
                                         height: 150,
-                                        color: Colors.grey[800],
+                                        color: Colors.black,
                                         child: const Center(
                                           child: Text("Pas de photo",
                                               style: TextStyle(
-                                                  color: Colors.white)),
+                                                  color: Colors.black)),
                                         ),
                                       );
                                     }
@@ -193,7 +193,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                                   menu.restaurantName?? "",
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -201,18 +201,18 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                                 Text(
                                   'Benin | ${menu.restaurantAddress}',
                                   style: const TextStyle(
-                                      color: Colors.white, fontSize: 16),
+                                      color: Colors.black, fontSize: 16),
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     const SizedBox(width: 16),
                                     const Icon(Icons.star,
-                                        color: Colors.yellowAccent),
+                                        color: Color(0xFF006650)),
                                     const SizedBox(width: 4),
                                     const Text(
                                       "4.5",
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(color: Colors.black),
                                     ),
                                     const Spacer(),
                                     TextButton(
@@ -228,8 +228,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                                       child: const Text(
                                         "Voir",
                                         style: TextStyle(
-                                            color: Color.fromRGBO(
-                                                251, 219, 91, 1)),
+                                            color: Colors.black),
                                       ),
                                     ),
                                     const SizedBox(width: 16),
@@ -280,7 +279,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                         ));
                       },
                       child: Card(
-                        color: Colors.grey[900],
+                        color: Colors.white38,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -291,7 +290,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                                     detSnapshot.data!.isEmpty) {
                                   return Container(
                                     height: 150,
-                                    color: Colors.grey[800],
+                                    color: Colors.black,
                                     child: const Center(
                                       child: Text("Pas de photo",
                                           style: TextStyle(
@@ -326,7 +325,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                               child: Text(
                                 resto.restaurantName?? "",
                                 style: const TextStyle(
-                                    color: Colors.white, fontSize: 16),
+                                    color: Colors.black, fontSize: 16),
                               ),
                             ),
                             FutureBuilder<double>(
@@ -341,7 +340,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                                         horizontal: 16.0, vertical: 4),
                                     child: Text(
                                       "Calcul distance...",
-                                      style: TextStyle(color: Colors.white70),
+                                      style: TextStyle(color: Colors.black),
                                     ),
                                   );
                                 }
@@ -362,7 +361,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                               child: Text(
                                 'Benin | ${resto.restaurantAddress}',
                                 style: const TextStyle(
-                                    color: Colors.white, fontSize: 14),
+                                    color: Colors.black, fontSize: 14),
                               ),
                             ),
                           ],

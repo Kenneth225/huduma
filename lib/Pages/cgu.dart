@@ -7,7 +7,7 @@ class Cgu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(251, 219, 91, 1),
+        backgroundColor: Color(0xFF006650),
         title: Text("Conditions d'utilisation"),
       ),
       body:  SingleChildScrollView(

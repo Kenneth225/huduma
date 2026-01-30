@@ -180,14 +180,9 @@ class _DetailsState extends State<Details> {
                         const SizedBox(height: 10),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color.fromRGBO(
-                              251,
-                              219,
-                              91,
-                              1,
-                            ),
+                            backgroundColor: const Color(0xFF006650)
                           ),
-                          child: const Text("APPLIQUER"),
+                          child: const Text("APPLIQUER", style: TextStyle(color: Colors.white),),
                           onPressed: () {
                             if (when == null || hour == null) {
                               Fluttertoast.showToast(
@@ -213,10 +208,10 @@ class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(widget.nom),
-        backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+        title: Text(widget.nom, style: TextStyle(color: Colors.white),),
+        backgroundColor: const Color(0xFF006650),
       ),
       body: FutureBuilder<List<Detail>>(
         future: informationFuture,
@@ -259,7 +254,7 @@ class _DetailsState extends State<Details> {
                 leading: const Icon(Icons.fastfood),
                 title: const Text(
                   "Nos Repas",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black),
                 ),
                 onTap: () {
                   Navigator.push(
@@ -275,7 +270,7 @@ class _DetailsState extends State<Details> {
                 leading: const Icon(Icons.check_circle_rounded),
                 title: const Text(
                   "Réservation",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black),
                 ),
                 onTap: _openReservationModal,
               ),
@@ -283,7 +278,7 @@ class _DetailsState extends State<Details> {
                 leading: const Icon(Icons.map),
                 title: const Text(
                   "Adresse",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black),
                 ),
                 onTap: () {
                   final det = details[0];

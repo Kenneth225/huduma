@@ -90,9 +90,9 @@ class _RecettesListState extends State<RecettesList> {
   @override
   Widget build(BuildContext context) {
    return Scaffold(
-     backgroundColor: Colors.black,
+     backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(251, 219, 91, 1),
+        backgroundColor: Color(0xFF006650),
         title: Text("Recettes"),
       ),
       body: SingleChildScrollView(

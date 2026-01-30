@@ -22,14 +22,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ohresto',
+      title: 'OHRESTO',
           theme: ThemeData(
-            primarySwatch: Colors.yellow,
+            primarySwatch: Colors.green,
             primaryTextTheme:
                 TextTheme(displayLarge: TextStyle(color: Colors.white)),
             primaryColor: Colors.white,
             scaffoldBackgroundColor: Color.fromRGBO(245, 245, 245, .9),
-          //  buttonColor: Colors.yellowAccent[700],
+          //  buttonColor: Color(0xFF006650)[700],
           ),
           debugShowCheckedModeBanner: false,
           initialRoute: 'invite',
@@ -186,7 +186,7 @@ class _HomeState extends State<Home> {
                                     borderRadius: BorderRadius.circular(10),
                                     gradient: LinearGradient(colors: [
                                       Color.fromRGBO(0, 0, 0, 1),
-                                      Color.fromRGBO(251, 219, 91, 1),
+                                      Color(0xFF006650),
                                     ])),
                                 child: Center(
                                   child: TextButton(
@@ -211,7 +211,7 @@ class _HomeState extends State<Home> {
                                   },
                                   child: Text("Inscription",
                                       style: TextStyle(
-                                          color: Color.fromRGBO(251, 219, 91, 1)))),
+                                          color: Color(0xFF006650)))),
                               TextButton(
                                   onPressed: () {
                                     mdpO();
@@ -219,7 +219,7 @@ class _HomeState extends State<Home> {
                                   child: Text(
                                     "Mot de passe oublié?",
                                     style: TextStyle(
-                                        color: Color.fromRGBO(251, 219, 91, 1)),
+                                        color: Color(0xFF006650)),
                                   )),
                             ],
                           ),

@@ -24,12 +24,12 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: AppBar(
           backgroundColor: Color.fromRGBO(143, 148, 251, 1),
-          title: Text("Rechercher un repas"),
+          title: Text("Rechercher un repas", style: TextStyle(color: Colors.white),),
           actions: [
             IconButton(
               onPressed: () {
@@ -38,7 +38,7 @@ class _SearchState extends State<Search> {
                   delegate: FoodItemsSearch(loadFuture: loadFuture),
                 );
               },
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.search, color: Colors.white,),
             ),
             PopupOptionMenu(),
           ],

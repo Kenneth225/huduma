@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'fun.dart';
 
 class Livrable extends StatefulWidget {
@@ -21,6 +20,7 @@ class Livrable extends StatefulWidget {
 }
 
 class _LivrableState extends State<Livrable> {
+  int note = 3;
   late Future<List<Avis>> avisFuture;
   late Future<List<Livrables>> repasFuture;
 
@@ -31,7 +31,7 @@ class _LivrableState extends State<Livrable> {
   List<String> propriArray = [];
 
   bool processing = false;
-  int note = 3;
+  
 
   final TextEditingController adressectrl = TextEditingController();
   final TextEditingController cmtctrl = TextEditingController();
@@ -128,7 +128,12 @@ class _LivrableState extends State<Livrable> {
             ),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed:
+                    () => Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      'accueil',
+                      (route) => false,
+                    ),
                 child: const Text("OK"),
               ),
             ],
@@ -137,11 +142,15 @@ class _LivrableState extends State<Livrable> {
   }
 
   void _showRatingModal(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder:
-          (_) => Padding(
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    builder: (_) {
+    //  int localNote = note; // valeur locale
+
+      return StatefulBuilder(
+        builder: (context, setModalState) {
+          return Padding(
             padding: MediaQuery.of(context).viewInsets,
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -160,25 +169,37 @@ class _LivrableState extends State<Livrable> {
                       labelText: "Commentaire",
                     ),
                   ),
+                  const SizedBox(height: 10),
+
                   NumberPicker(
                     value: note,
                     minValue: 1,
                     maxValue: 6,
-                    onChanged: (val) => setState(() => note = val),
+                    step: 1,
+                    onChanged: (value) {
+                      setModalState(() => note = value);
+                      //note = value; // si tu veux garder la valeur
+                    },
                   ),
+
                   TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+                      backgroundColor: const Color(0xFF006650),
                     ),
                     onPressed: () => noter(note, context),
-                    child: const Text("Soumettre"),
+                    child: const Text("Soumettre", style: TextStyle(color: Colors.white),),
                   ),
                 ],
               ),
             ),
-          ),
-    );
-  }
+          );
+        },
+      );
+    },
+  );
+}
+
+
 
   // =========================
   // ====== UI ===============
@@ -188,11 +209,12 @@ class _LivrableState extends State<Livrable> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text(widget.title),
-          backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+          title: Text(widget.title, style: TextStyle(color: Colors.white),),
+          backgroundColor: const Color(0xFF006650),
           bottom: const TabBar(
+            labelColor: Colors.white,
             tabs: [Tab(text: "Commande"), Tab(text: "Avis")],
           ),
         ),
@@ -235,7 +257,7 @@ class _LivrableState extends State<Livrable> {
                               subtitle: Text("${repa.product_price} FCFA"),
                               trailing: Checkbox(
                                   value: repaStatus[index],
-                                  activeColor: Color.fromRGBO(251, 219, 91, 1),
+                                  activeColor: Color(0xFF006650),
                                   onChanged: (bool? val) {
                                     setState(() {
                                       repaStatus[index] = val ?? false;
@@ -256,14 +278,7 @@ class _LivrableState extends State<Livrable> {
                                   },
                                 ),
                               
-                           /*   Checkbox(
-                                value: repaStatus[index],
-                                onChanged: (val) {
-                                  setState(() {
-                                    repaStatus[index] = val!;
-                                  });
-                                },
-                              ),*/
+                           
                             ),
                           );
                         },
@@ -277,7 +292,7 @@ class _LivrableState extends State<Livrable> {
       padding: const EdgeInsets.all(16.0),
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+          backgroundColor: const Color(0xFF006650),
           minimumSize: const Size.fromHeight(50),
         ),
         onPressed: () {
@@ -305,7 +320,7 @@ class _LivrableState extends State<Livrable> {
             ? const CircularProgressIndicator(color: Colors.black)
             : const Text(
                 "Commander",
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(color: Colors.white),
               ),
       ),
     ),
@@ -343,9 +358,9 @@ class _LivrableState extends State<Livrable> {
                   ),
                 ),
                 FloatingActionButton(
-                  backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+                  backgroundColor: const Color(0xFF006650),
                   onPressed: () => _showRatingModal(context),
-                  child: const Icon(Icons.add),
+                  child: const Icon(Icons.add, color: Colors.white,),
                 ),
               ],
             ),

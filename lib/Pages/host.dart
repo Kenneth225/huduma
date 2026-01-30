@@ -139,14 +139,14 @@ class _HenuState extends State<Henu> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(251, 219, 91, 1),
+        backgroundColor: const Color(0xFF006650),
         title: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: Container(
             height: 100,
-            color: const Color.fromRGBO(251, 219, 91, 1),
+            color: const Color(0xFF006650),
             child: TabBar(
               controller: _tabController,
               labelColor: Colors.white,
@@ -163,7 +163,7 @@ class _HenuState extends State<Henu> with SingleTickerProviderStateMixin {
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.yellowAccent),
+              decoration: BoxDecoration(color: Color(0xFF006650)),
               child: Text('ohresto Menu'),
             ),
             ListTile(
@@ -248,7 +248,7 @@ class _HenuState extends State<Henu> with SingleTickerProviderStateMixin {
                                 child: const Text("Voir",
                                     style: TextStyle(
                                         color:
-                                            Color.fromRGBO(251, 219, 91, 1))),
+                                            Color(0xFF006650))),
                               ),
                             ],
                           ),
