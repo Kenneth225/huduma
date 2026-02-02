@@ -54,7 +54,8 @@ Widget buildHintsList(List<Recipe> recipes) {
                       MaterialPageRoute(
                         builder: (context) => Details(
                             nom: recipe.restaurantName ?? '',
-                            cle: recipe.proprio ?? ''),
+                            cle: recipe.proprio ?? '',
+                            mail: recipe.restaurantName?? '',),
                       ),
                     );
                   },

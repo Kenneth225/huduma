@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'package:ohresto/Structures/orderitem_structure.dart';
 import 'package:http/http.dart' as http;
+import 'package:ohresto/config.dart';
 
 
 
 Future<List<Odets>>  viewdets(name) async {
 
-  var url = Uri.parse("http://demoalito.mydevcloud.com/api/ordersdet.php");
+  var url = Uri.parse("${api_link}/ordersdet.php");
   var data = {
     'user': name,
   };

@@ -10,7 +10,7 @@ class SearchRepositoryImpl extends SearchRepository {
   @override
   Future<List<Recipe>?> searchFoods(String query) async {
     var response =
-        await http.get(Uri.parse('http://demoalito.mydevcloud.com/api/searchfood.php?q=$query'));
+        await http.get(Uri.parse('${api_link}/searchfood.php?q=$query'));
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
 

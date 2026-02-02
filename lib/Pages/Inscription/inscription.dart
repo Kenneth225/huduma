@@ -1,3 +1,4 @@
+import 'package:ohresto/config.dart';
 import 'package:ohresto/main.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -345,7 +346,7 @@ class _InscriptionState extends State<Inscription> {
           msg: "Mot de passe de confirmation incompatible",
           toastLength: Toast.LENGTH_SHORT);
     } else {
-      var url = Uri.parse("http://demoalito.mydevcloud.com/api/inscorp.php");
+      var url = Uri.parse("${api_link}/inscorp.php");
       var data = {
         "email": emailctrl.text,
         "username": usernamectrl.text,

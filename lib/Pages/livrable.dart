@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:ohresto/Structures/avis_structure.dart';
+import 'package:ohresto/config.dart';
 import 'package:ohresto/controller_api/avis_api.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -11,8 +12,9 @@ import 'fun.dart';
 class Livrable extends StatefulWidget {
   final String title;
   final String rstid;
+  final String boxmail;
 
-  const Livrable({Key? key, required this.title, required this.rstid})
+  const Livrable({Key? key, required this.title, required this.rstid, required this.boxmail})
     : super(key: key);
 
   @override
@@ -47,7 +49,7 @@ class _LivrableState extends State<Livrable> {
   // ====== GET REPAS ========
   // =========================
   Future<List<Livrables>> _getBouff() async {
-    var url = Uri.parse("http://demoalito.mydevcloud.com/api/inforepas.php");
+    var url = Uri.parse("${api_link}/inforepas.php");
     var res = await http.post(url, body: {'proprio': widget.rstid});
 
     if (res.statusCode != 200) {
@@ -90,7 +92,7 @@ class _LivrableState extends State<Livrable> {
     final prefs = await SharedPreferences.getInstance();
     final userName = prefs.getString('username') ?? "";
 
-    var url = Uri.parse("http://demoalito.mydevcloud.com/api/addavis.php");
+    var url = Uri.parse("${api_link}/addavis.php");
 
     var res = await http.post(
       url,
@@ -312,6 +314,7 @@ class _LivrableState extends State<Livrable> {
                 prix: priceArray,
                 qtite: qtArray,
                 proprio: propriArray,
+                box: widget.boxmail
               ),
             ),
           );

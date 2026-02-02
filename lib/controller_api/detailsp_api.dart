@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'package:ohresto/Structures/detailsp_structure.dart';
 import 'package:http/http.dart' as http;
+import 'package:ohresto/config.dart';
 
 
 
 Future<List<Detailsp>> fetchdetsp(name) async {
 
-  var url = Uri.parse("http://demoalito.mydevcloud.com/api/detailsp.php");
+  var url = Uri.parse("${api_link}/detailsp.php");
   var data = {
     'user': name,
   };

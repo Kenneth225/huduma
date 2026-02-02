@@ -6,6 +6,7 @@ import 'package:numberpicker/numberpicker.dart';
 import 'package:ohresto/Structures/commande_structure.dart';
 import 'package:ohresto/Structures/orderitem_structure.dart';
 import 'package:ohresto/Structures/reservation_structure.dart';
+import 'package:ohresto/config.dart';
 import 'package:ohresto/controller_api/commande_api.dart';
 import 'package:ohresto/controller_api/orderitem_api.dart';
 import 'package:ohresto/controller_api/reservation_api.dart';
@@ -230,7 +231,7 @@ class _CommandesState extends State<Commandes>
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       appBar:AppBar(
-  title: const Text('Mes Commandes'),
+  title: const Text('Mes Commandes', style: TextStyle(color: Colors.white)),
   backgroundColor: const Color(0xFF006650),
   bottom: TabBar(
     controller: _tabController,
@@ -421,7 +422,7 @@ class _CommandesState extends State<Commandes>
 
   void valider(String iduniq) async {
     final url =
-        Uri.parse("http://demoalito.mydevcloud.com/api/updatecom.php");
+        Uri.parse("${api_link}/updatecom.php");
     final res = await http.post(url, body: {'code': iduniq});
     if (res.body.isNotEmpty) {
       print(jsonDecode(res.body));
@@ -430,7 +431,7 @@ class _CommandesState extends State<Commandes>
 
   void valider_reserv(iduniq, jour, tinmin) async {
     final url =
-        Uri.parse("http://demoalito.mydevcloud.com/api/updatereserv.php");
+        Uri.parse("${api_link}/updatereserv.php");
     final res = await http.post(url, body: {'code': iduniq, 'place': tinmin});
     if (res.body.isNotEmpty) {
       print(jsonDecode(res.body));
@@ -438,7 +439,7 @@ class _CommandesState extends State<Commandes>
   }
 
   void valider_com(iduniq) async {
-    final url = Uri.parse("http://demoalito.mydevcloud.com/api/validcom.php");
+    final url = Uri.parse("${api_link}/validcom.php");
     final res = await http.post(url, body: {'code': iduniq});
     if (res.body.isNotEmpty) {
       print(jsonDecode(res.body));

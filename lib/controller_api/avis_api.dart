@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:ohresto/Structures/avis_structure.dart';
+import 'package:ohresto/config.dart';
 
 Future<List<Avis>> fetchavis(userName) async {
-  var url = Uri.parse("http://demoalito.mydevcloud.com/api/avis.php");
+  var url = Uri.parse("${api_link}/avis.php");
   var data = {
     'user': userName,
   };

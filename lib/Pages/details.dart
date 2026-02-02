@@ -1,5 +1,6 @@
 import 'package:numberpicker/numberpicker.dart';
 import 'package:ohresto/Structures/details_structure.dart';
+import 'package:ohresto/config.dart';
 import 'package:ohresto/controller_api/details_api.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -12,8 +13,9 @@ import 'livrable.dart';
 class Details extends StatefulWidget {
   final String nom;
   final String cle;
+  final String mail;
 
-  const Details({Key? key, required this.nom, required this.cle})
+  const Details({Key? key, required this.nom, required this.cle, required this.mail})
     : super(key: key);
 
   @override
@@ -47,7 +49,7 @@ class _DetailsState extends State<Details> {
     final prefs = await SharedPreferences.getInstance();
     final String? userName = prefs.getString('username') ?? '';
 
-    var url = Uri.parse("http://demoalito.mydevcloud.com/api/reservation.php");
+    var url = Uri.parse("${api_link}/reservation.php");
     var data = {
       'proprio': proprio,
       'client_name': userName,
@@ -261,7 +263,7 @@ class _DetailsState extends State<Details> {
                     context,
                     MaterialPageRoute(
                       builder:
-                          (_) => Livrable(title: widget.nom, rstid: widget.cle),
+                          (_) => Livrable(title: widget.nom, rstid: widget.cle, boxmail: widget.mail,),
                     ),
                   );
                 },

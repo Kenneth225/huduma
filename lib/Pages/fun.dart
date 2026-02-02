@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:ohresto/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -11,8 +12,9 @@ class Fun extends StatefulWidget {
   final List<dynamic> prix;
   final List<dynamic> qtite;
   final List<dynamic> proprio;
+  final String box;
 
-  Fun({Key? key, required this.repas, required this.prix, required this.qtite, required this.proprio})
+  Fun({Key? key, required this.repas, required this.prix, required this.qtite, required this.proprio, required this.box})
       : super(key: key);
 
   @override
@@ -53,7 +55,7 @@ class _FunState extends State<Fun> {
     final String? userId = prefs.getString('id');
     final String? userName = prefs.getString('username');
 
-    var url = Uri.parse("http://demoalito.mydevcloud.com/api/commande.php");
+    var url = Uri.parse("${api_link}/commande.php");
     var data = {
       'user': userId ?? '',
       'proprio': proprio.isNotEmpty ? proprio[0] : '',
@@ -65,6 +67,7 @@ class _FunState extends State<Fun> {
       'number_client': numberctrl.text,
       'bouf': repas.toString(),
       'quant': quantite.toString(),
+      'mail' : widget.box
     };
 
     setState(() {
@@ -185,7 +188,7 @@ class _FunState extends State<Fun> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Sommaire de commande"),
+        title: const Text("Sommaire de commande", style: TextStyle(color: Colors.white),),
         backgroundColor: const Color(0xFF006650),
       ),
       body: SingleChildScrollView(
@@ -316,7 +319,7 @@ class _FunState extends State<Fun> {
                 : ElevatedButton(
                     onPressed: getCurrentLocation,
                     style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF006650)),
-                    child: const Text("Envoyer ma position actuelle"),
+                    child: const Text("Envoyer ma position actuelle", style: TextStyle(color: Colors.white)),
                   ),
           ],
         ),
@@ -357,7 +360,7 @@ class _FunState extends State<Fun> {
             resumeModalBottomSheet(context, widget.repas, widget.qtite, widget.prix, widget.proprio, montant);
           }
         },
-        child: processing ? const CircularProgressIndicator(color: Colors.red) : const Text("Confirmer Commande"),
+        child: processing ? const CircularProgressIndicator(color: Colors.red) : const Text("Confirmer Commande", style: TextStyle(color: Colors.white)),
       ),
     );
   }

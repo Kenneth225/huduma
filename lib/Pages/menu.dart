@@ -6,6 +6,7 @@ import 'package:ohresto/Structures/details_structure.dart';
 import 'package:ohresto/Structures/detailsp_structure.dart';
 import 'package:ohresto/Structures/menu_structure.dart';
 import 'package:ohresto/Structures/resto_structure.dart';
+import 'package:ohresto/config.dart';
 import 'package:ohresto/controller_api/details_api.dart';
 import 'package:ohresto/controller_api/detailsp_api.dart';
 import 'package:ohresto/controller_api/menu_api.dart';
@@ -53,7 +54,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
 
   void _checkHums() async {
     final prefs = await SharedPreferences.getInstance();
-    final uri = Uri.parse("http://demoalito.mydevcloud.com/api/nbhums.php");
+    final uri = Uri.parse("${api_link}/nbhums.php");
     var data = {"user": prefs.getString("username") ?? ""};
     var res = await http.post(uri, body: data);
 
@@ -221,7 +222,8 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                                           MaterialPageRoute(
                                             builder: (context) => Livrable(
                                                 title: menu.restaurantName?? "",
-                                                rstid: menu.proprio?? ""),
+                                                rstid: menu.proprio?? "",
+                                                boxmail: menu.restaurantEmail?? "",),
                                           ),
                                         );
                                       },
@@ -275,6 +277,7 @@ class _MenuState extends State<Menu> with SingleTickerProviderStateMixin {
                           builder: (context) => Details(
                             nom: resto.restaurantName?? "",
                             cle: resto.proprio?? "",
+                            mail: resto.restaurantEmail?? ""
                           ),
                         ));
                       },

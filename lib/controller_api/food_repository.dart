@@ -10,7 +10,7 @@ class FoodRepositoryImpl extends FoodRepository {
   @override
   Future<List<Recipe>> getFoods() async {
   var response =
-        await http.get(Uri.parse('http://demoalito.mydevcloud.com/api/searchfood.php?q=#4'));
+        await http.get(Uri.parse('${api_link}/searchfood.php?q=#4'));
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
 

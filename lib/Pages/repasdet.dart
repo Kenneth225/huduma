@@ -79,7 +79,7 @@ class _RepasdetState extends State<Repasdet> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                Details(nom: det.restaurantName?? "", cle: det.proprio?? "")));
+                                Details(nom: det.restaurantName?? "", cle: det.proprio?? "", mail: det.restaurantName?? "",)));
                   },
                   child: Card(
                     color: Colors.grey[900],

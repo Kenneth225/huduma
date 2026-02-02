@@ -9,6 +9,7 @@ import 'package:ohresto/Pages/home.dart';
 import 'package:ohresto/Pages/host.dart';
 import 'package:ohresto/Pages/noconnection.dart';
 import 'package:http/http.dart' as http;
+import 'package:ohresto/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -243,7 +244,7 @@ class _HomeState extends State<Home> {
           msg: "Veillez entrez un mail valide",
           toastLength: Toast.LENGTH_SHORT);
     } else {
-      var url = Uri.parse("http://demoalito.mydevcloud.com/api/myinfos.php");
+      var url = Uri.parse("${api_link}/myinfos.php");
       var data = {
         "email": emailctrl.text,
         "password": passctrl.text,
@@ -267,7 +268,7 @@ class _HomeState extends State<Home> {
 
   void login() async {
     CircularProgressIndicator();
-    var url = Uri.parse("http://demoalito.mydevcloud.com/api/test.php");
+    var url = Uri.parse("${api_link}/test.php");
     var data = {
       "email": emailctrl.text,
       "password": passctrl.text,

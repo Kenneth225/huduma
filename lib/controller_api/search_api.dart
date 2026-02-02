@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:ohresto/Structures/search_structure.dart';
 import 'package:http/http.dart' as http;
+import 'package:ohresto/config.dart';
 
 Future<List<Searchfood>>loadfood() async {
    
-    var url = Uri.parse("http://demoalito.mydevcloud.com/api/searchfood.php");
+    var url = Uri.parse("${api_link}/searchfood.php");
     var data = {
       'tag': 'utap',
     };
