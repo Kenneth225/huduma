@@ -231,11 +231,14 @@ class _CommandesState extends State<Commandes>
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       appBar:AppBar(
+        foregroundColor: Colors.white,
   title: const Text('Mes Commandes', style: TextStyle(color: Colors.white)),
   backgroundColor: const Color(0xFF006650),
   bottom: TabBar(
     controller: _tabController,
     labelColor: Colors.white,
+    unselectedLabelColor: Colors.white54,
+    indicatorColor: Colors.green,
     tabs: const [
       Tab(text: "Vos Commandes"),
       Tab(text: "Vos Réservations"),

@@ -212,6 +212,7 @@ class _DetailsState extends State<Details> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        foregroundColor: Colors.white,
         title: Text(widget.nom, style: TextStyle(color: Colors.white),),
         backgroundColor: const Color(0xFF006650),
       ),

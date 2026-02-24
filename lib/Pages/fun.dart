@@ -174,7 +174,7 @@ class _FunState extends State<Fun> {
                 },
                 child: processing
                     ? const CircularProgressIndicator(color: Colors.red)
-                    : const Text("Effectuer Commande"),
+                    : const Text("Effectuer Commande", style: TextStyle(color: Colors.white),),
               ),
             ),
           ],
@@ -188,6 +188,7 @@ class _FunState extends State<Fun> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        foregroundColor: Colors.white,
         title: const Text("Sommaire de commande", style: TextStyle(color: Colors.white),),
         backgroundColor: const Color(0xFF006650),
       ),
@@ -375,11 +376,11 @@ void _settingModalBottomSheet(BuildContext context) {
         children: [
           const Center(child: Icon(Icons.check_circle_rounded, color: Colors.green, size: 55.0)),
           const Center(child: Text("Commande Envoyée", style: TextStyle(fontSize: 23.2))),
-          const Center(child: Text("Votre commande devrait être prise en compte d'ici 5 min", style: TextStyle(fontSize: 23.2))),
+          const Center(child: Text("Votre commande sera prise en compte d'ici 5 min", style: TextStyle(fontSize: 23.2))),
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF006650)),
-              child: const Text("Terminer"),
+              child: const Text("Terminer", style: TextStyle(color: Colors.white),),
               onPressed: () {
                 Navigator.pushNamedAndRemoveUntil(context, 'accueil', (route) => false);
               },

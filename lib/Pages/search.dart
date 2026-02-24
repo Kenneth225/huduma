@@ -28,6 +28,7 @@ class _SearchState extends State<Search> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: AppBar(
+          foregroundColor: Colors.white,
           backgroundColor: Color.fromRGBO(143, 148, 251, 1),
           title: Text("Rechercher un repas", style: TextStyle(color: Colors.white),),
           actions: [

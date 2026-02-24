@@ -36,6 +36,7 @@ class _AcceuilState extends State<Acceuil> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
+        foregroundColor: Colors.white,
         elevation: 0.0,
         title: Text("OHRESTO", style: TextStyle(color: Colors.white)),
         centerTitle: true,

@@ -213,10 +213,13 @@ class _LivrableState extends State<Livrable> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          foregroundColor: Colors.white,
           title: Text(widget.title, style: TextStyle(color: Colors.white),),
           backgroundColor: const Color(0xFF006650),
           bottom: const TabBar(
             labelColor: Colors.white,
+            unselectedLabelColor: Colors.white54,
+            indicatorColor: Colors.green,
             tabs: [Tab(text: "Commande"), Tab(text: "Avis")],
           ),
         ),

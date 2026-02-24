@@ -90,8 +90,10 @@ class _RecettesListState extends State<RecettesList> {
   @override
   Widget build(BuildContext context) {
    return Scaffold(
+    
      backgroundColor: Colors.white,
       appBar: AppBar(
+        foregroundColor: Colors.white,
         backgroundColor: Color(0xFF006650),
         title: Text("Recettes"),
       ),
@@ -117,15 +119,15 @@ class _RecettesListState extends State<RecettesList> {
                                 ListTile(
                                   leading: Image.network(
                                       "http://demoalito.mydevcloud.com/Resto/assets/uploads/images/${recette.picture}"),
-                                  title: Text(recette.nom?? "", style: TextStyle(color: Colors.white),),
+                                  title: Text(recette.nom?? "", style: TextStyle(color: Colors.black),),
                                   trailing:  int.parse(nbetoile!) >= int.parse(recette.id?? "") ? Column(
                                     children: [
-                                      Icon(Icons.lock_open,color: Colors.white),
+                                      Icon(Icons.lock_open,color: Colors.black),
                                      // Text("${recette.id}", style: TextStyle(color: Colors.white),)
                                     ],
                                   ): Column(
                                     children: [
-                                      Icon(Icons.lock, color: Colors.white),
+                                      Icon(Icons.lock, color: Colors.black),
                                      // Text("${recette.id}", style: TextStyle(color: Colors.white),)
                                     ],
                                   ) ,

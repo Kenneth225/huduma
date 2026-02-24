@@ -59,11 +59,12 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        foregroundColor: Colors.white,
         backgroundColor: Color(0xFF006650),
-        title: Text("Rechercher un repas"),
+        title: Text("Rechercher un repas", style: TextStyle(color: Colors.white ),),
         actions: [
           IconButton(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.search, color: Colors.white,),
               onPressed: () {
           /*      showSearch(
                     context: context,
@@ -199,6 +200,7 @@ class PopupOptionMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<MenuOption>(
+      color: Colors.white,
       itemBuilder: (context) => <PopupMenuEntry<MenuOption>>[
         PopupMenuItem(child: Text("Plat Africain"), value: MenuOption.Africain),
         PopupMenuItem(child: Text("Plat Asiatique"), value: MenuOption.Asiatique),

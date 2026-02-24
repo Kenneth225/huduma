@@ -46,8 +46,9 @@ class _RepasdetState extends State<Repasdet> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        foregroundColor: Colors.white,
         backgroundColor: Color(0xFF006650),
-        title: Text(widget.alimnts ?? "Restaurants"),
+        title: Text(widget.alimnts ?? "Restaurants", style: TextStyle(color: Colors.white),),
       ),
       body: FutureBuilder<List<Repasdets>>(
         future: restoFuture,

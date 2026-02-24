@@ -141,6 +141,7 @@ class _HenuState extends State<Henu> with SingleTickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        foregroundColor: Colors.white,
         backgroundColor: const Color(0xFF006650),
         title: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
