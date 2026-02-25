@@ -1,23 +1,36 @@
-
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:ohresto/Structures/food.dart';
+import 'package:ohresto/Structures/food.dart'; // ton modèle Recipe
 
-abstract class SearchState extends Equatable {}
+// Classe de base pour les états du SearchBloc
+abstract class SearchState extends Equatable {
+  const SearchState();
 
-class SearchUninitialized extends SearchState {
   @override
   List<Object> get props => [];
 }
 
+// État initial
+class SearchUninitialized extends SearchState {}
+
+// État de chargement
+class SearchLoading extends SearchState {}
+
+// État avec résultat
 class SearchLoaded extends SearchState {
-  List<Recipe>? recipes;
-  SearchLoaded({@required this.recipes});
+  final List<Recipe> recipes;
+
+  const SearchLoaded({required this.recipes});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [recipes];
 }
 
+// État d'erreur
 class SearchError extends SearchState {
+  final String message;
+
+  const SearchError({required this.message});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [message];
 }

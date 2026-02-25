@@ -145,7 +145,7 @@ class FoodItemsSearch extends SearchDelegate<FoodItem> {
             itemBuilder: (context, index) {
               final item = results[index];
               return ListTile(
-                title: Text("${item.title}", style: TextStyle(color: Colors.white)),
+                title: Text("${item.title}", style: TextStyle(color: Colors.black)),
                 onTap: () {
                   // Action à la sélection, par exemple ouvrir Repasdet
                   Navigator.push(
@@ -191,7 +191,7 @@ class FoodItemsSearch extends SearchDelegate<FoodItem> {
               final item = suggestions[index];
               return ListTile(
                 title:
-                    Text("${item.title}", style: TextStyle(color: Colors.white70)),
+                    Text("${item.title}", style: TextStyle(color: Colors.black)),
                 onTap: () {
                   query = item.title!;
                   showResults(context);

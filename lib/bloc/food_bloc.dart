@@ -1,7 +1,7 @@
-/*import 'package:OHRESTO/bloc/food_event.dart';
-import 'package:OHRESTO/bloc/food_state.dart';
-import 'package:OHRESTO/controller_api/food_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ohresto/bloc/food_event.dart';
+import 'package:ohresto/bloc/food_state.dart';
+import 'package:ohresto/controller_api/food_repository.dart';
 
 class FoodBloc extends Bloc<FoodEvent, FoodState> {
   final FoodRepository repository;
@@ -18,4 +18,3 @@ class FoodBloc extends Bloc<FoodEvent, FoodState> {
     });
   }
 }
-*/

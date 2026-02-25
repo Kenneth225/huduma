@@ -18,7 +18,7 @@ Widget buildHintsList(List<Recipe> recipes) {
   }
 
   return Container(
-    decoration: const BoxDecoration(color: Colors.black),
+    decoration: const BoxDecoration(color: Colors.white),
     height: 470,
     child: Column(
       children: [
@@ -27,7 +27,7 @@ Widget buildHintsList(List<Recipe> recipes) {
           "Nos Suggestions",
           style: TextStyle(
             fontSize: 24,
-            color: Colors.white,
+            color: Colors.black,
             fontWeight: FontWeight.bold,
             fontStyle: FontStyle.italic,
           ),
@@ -60,7 +60,7 @@ Widget buildHintsList(List<Recipe> recipes) {
                     );
                   },
                   child: Card(
-                    color: Colors.grey[900],
+                    color: Colors.grey[300],
                     child: ListTile(
                       leading: Image.network(
                         "http://demoalito.mydevcloud.com/Resto//assets/uploads/images/${recipe.restaurantLogo ?? ''}",
@@ -69,7 +69,7 @@ Widget buildHintsList(List<Recipe> recipes) {
                         fit: BoxFit.cover,
                       ),
                       title: Text(recipe.restaurantName ?? '',
-                          style: const TextStyle(color: Colors.white)),
+                          style: const TextStyle(color: Colors.black)),
                       subtitle: FutureBuilder<double>(
                         future: getRestLocation(lat, long),
                         builder: (context, snapshot) {

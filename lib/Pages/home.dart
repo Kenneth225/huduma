@@ -42,7 +42,7 @@ class _AcceuilState extends State<Acceuil> {
         centerTitle: true,
         backgroundColor: Color(0xFF006650),
       ),
-      body: Center(child: listofbody[currentIndex]),
+      body: listofbody[currentIndex],
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical

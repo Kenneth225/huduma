@@ -3,17 +3,39 @@ import 'dart:convert';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ohresto/Pages/Inscription/inscription.dart';
 import 'package:ohresto/Pages/home.dart';
 import 'package:ohresto/Pages/host.dart';
 import 'package:ohresto/Pages/noconnection.dart';
 import 'package:http/http.dart' as http;
+import 'package:ohresto/bloc/food_bloc.dart';
+import 'package:ohresto/bloc/search/search_bloc.dart';
 import 'package:ohresto/config.dart';
+import 'package:ohresto/controller_api/food_repository.dart';
+import 'package:ohresto/controller_api/search_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => FoodBloc(
+            repository: FoodRepositoryImpl(),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => SearchBloc(
+            repository: SearchRepositoryImpl(),
+          ),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
